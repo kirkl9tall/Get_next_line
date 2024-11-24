@@ -12,33 +12,7 @@ size_t	ft_strlen(const char *str)
 		x++;
 	return (x);
 }
-//--------------------------------------------------------------------- substr---------------2----------------//
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char			*p;
-	unsigned int	x;
-	unsigned int	y;
-	unsigned int	ls;
-
-	if (!s)
-		return (NULL);
-	ls = ft_strlen((char *)s);
-	x = start;
-	y = 0;
-	p = malloc(len + 1);
-	if (p == NULL)
-		return (NULL);
-	if (start >= ls || len == 0)
-	{
-		p[0] = '\0';
-		return (p);
-	}
-	while (y < len && ((start + y) < ls))
-		p[y++] = s[x++];
-	p[y] = '\0';
-	return (p);
-}
 //*----------------------------------------------strjoin-----------------------------3----------------//
 
 char	*ft_strjoin(char const *s1, char const *s2)
