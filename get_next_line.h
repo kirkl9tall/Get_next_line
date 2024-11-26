@@ -9,15 +9,12 @@
 #ifndef BUFFER_SIZE
 #define BUFFER_SIZE 5
 #endif 
-char	*ft_strdup(const char *s);
-char	*ft_strrchr(const char *str, int c);
 char *get_next_line(int fd);
-int	checker(const char *str, int c);
-char	*ft_strchr(const char *str, int c);
-char	*ft_strdup(const char *s);
-char	*ft_strjoin(char  *s1, char  *s2);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-size_t	ft_strlen(const char *str);
-char	*ft_strldup(char *s, int i);
+char	*ft_strjoin(char  *s1, char *s2);
+size_t	ft_strlen(char *str);
+int checker(char *str, int c);
+char	*ft_strchr( char *str, int c);
+char	*ft_strldup( char *s, int i);
+char	*ft_strdup(char *s);
 
 #endif
