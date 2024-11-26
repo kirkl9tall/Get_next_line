@@ -1,54 +1,85 @@
 #include "get_next_line.h"
 #include <stdio.h>
 
-char *get_next_line(int fd)
+char *bomaamar(int fd,char *boby)
 {
-    static char  *boby;
     char *buff;
-    char *buff2;
-    char *chyata;
+    int a;
+    char *temp;
+   
 
-    int a = 0;
+    a = 0;
     while (checker(boby,'\n') == 0)
     {
         buff = malloc(BUFFER_SIZE + 1);
         a = read(fd,buff,BUFFER_SIZE);
-        //printf("here\n");
         if (!buff)
             return (NULL);
         buff[a] = '\0';
-        boby = ft_strjoin(boby, buff);
+        temp = boby;
+        boby = ft_strjoin(boby,buff);
+        if (boby == NULL)
+                return (free(temp),free (boby),NULL);
+         if (a > 0)
+            {
+                free(buff);
+                free(temp);
+            }
         if (a <= 0)
         {
             free(buff);
+            free(temp);
             break ;
         }
-    } 
-    chyata = ft_strrchr(buff,'\n');
+    }
+    //free(buff);
+    return (boby);
+}
+char *get_next_line(int fd)
+{
+    static char  *boby;
+    char *buff2;
+    char *labo;
+    if(fd == -1)
+        return (NULL);
+    boby = bomaamar(fd,boby);
     int j= 0;
-    printf("%s\n",boby);
     while (boby[j] != '\n' && boby[j])
         j++;
    if (boby[j] == '\n')
         j++; 
-    buff2 = ft_strldup(boby, j); 
-    printf("returned : [%s]\n",buff2); 
-    printf("--------------------------------------\n"); 
-    free(boby);
-    boby = chyata;
-    printf("\nboby is : %s\n",boby);
+    buff2 = ft_strldup(boby, j);
+    
+    boby = ft_strchr(boby,'\n');
+    if(boby)
+        boby = NULL;
+    //free(boby);
+    return (buff2);
 }
 
 int main ()
-
 {
-    int i = open("abdo.txt",O_CREAT| O_RDWR , 0666);
-    //write (i,"Hello Fucki\nng blinders !lalala no\nnono",35);
-    //lseek(i,0,SEEK_SET);
-    get_next_line(i);
-    get_next_line(i);
-    get_next_line(i);
+    int i = open("test.txt",O_CREAT| O_RDWR , 0666);
+    // write (i,"Hello Fucki\nng blinder\ns !lalala no\nnono",35);
+    // lseek(i,0,SEEK_SET);
+    char *a;
+    a =  get_next_line(i);
+    printf("%s", a);
+       free(a);
+/* 
+    a =  get_next_line(i);
+   printf("%s", a);
+      free(a);
 
-    // get_next_line(i);
-    // get_next_line(i);  */
-}
+    a =  get_next_line(i);
+    printf("%s", a);
+       free(a);
+
+    a =  get_next_line(i);
+   printf("%s", a);
+   free(a);
+    a =  get_next_line(i);
+   printf("%s", a);
+   free(a); */
+
+} 

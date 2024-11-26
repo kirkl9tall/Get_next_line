@@ -1,8 +1,5 @@
 #include "get_next_line.h"
 
-
-//------------------------------------------- strlen---------1--------------//
-
 size_t	ft_strlen(const char *str)
 {
 	size_t	x;
@@ -13,18 +10,15 @@ size_t	ft_strlen(const char *str)
 	return (x);
 }
 
-//*----------------------------------------------strjoin-----------------------------3----------------//
-
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*p;
 	int		x;
 	int		y;
-	if (!s1 && !s2)
+ 	if (!s1 && !s2)
 		return (malloc(1)); 
-
 	if (!s1)
-		s1 = "";
+		s1 = ""; 
 	if (!s2)
 		s2 = "";
 	x = 0;
@@ -40,25 +34,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	p[y] = '\0';
 	return (p);
 }
-//------------------------------------------------- strdup------------------------4------------//
-char	*ft_strdup(const char *s)
-{
-	char	*p;
-	int		x;
 
-	x = 0;
-	p = malloc(ft_strlen((char *)s) + 1);
-	if (p == NULL)
-		return (NULL);
-	while (s[x])
-	{
-		p[x] = s[x];
-		x++;
-	}
-	p[x] = '\0';
-	return (p);
-}
-//---------------------------------------------------- strchr--------------------------- 5---//
 int	checker(const char *str, int c)
 {
 	int		x;
@@ -78,22 +54,24 @@ int	checker(const char *str, int c)
 	return (0);
 }
 
-char	*ft_strrchr(const char *str, int c)
+char	*ft_strchr(const char *str, int c)
 {
-	int	y;
+	int		x;
+	size_t	y;
 
 	y = ft_strlen((char *)str);
+	x = 0;
 	if (c == '\0')
 		return ((char *)(str + y));
-	while (y >= 0)
+	while (str[x])
 	{
-		if (str[y] == (char)c)
-			return ((char *)str + y + 1);
-		y--;
+		if (str[x] == (char)c)
+			return ((char *)str + x + 1);
+		x++;
 	}
 	return (NULL);
 }
-char	*ft_strldup(const char *s, int i)
+char	*ft_strldup(char *s, int i)
 {
 	char	*p;
 	int		x;
@@ -108,5 +86,6 @@ char	*ft_strldup(const char *s, int i)
 		x++;
 	}
 	p[x] = '\0';
+	free(s);
 	return (p);
 }
