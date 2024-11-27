@@ -1,4 +1,4 @@
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 #include <stdio.h>
 size_t	ft_strlen(char *str)
 {
@@ -74,10 +74,12 @@ char	*ft_strldup(char *s, int i)
 char	*ft_strchr(char *str, int c)
 {
 	int		x;
+	size_t	y;
 
+	y = ft_strlen((char *)str);
 	x = 0;
 	if (c == '\0')
-		return (NULL);
+		return (ft_strdup(str + y));
 	while (str[x])
 	{
 		if (str[x] == (char)c)
