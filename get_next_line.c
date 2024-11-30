@@ -6,7 +6,7 @@
 /*   By: abismail <abismail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 21:16:52 by abismail          #+#    #+#             */
-/*   Updated: 2024/11/27 21:23:11 by abismail         ###   ########.fr       */
+/*   Updated: 2024/11/30 13:28:57 by abismail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ char *bomaamar(int fd , char  *boby)
 	while (checker(boby,'\n') == 0)
 	{
 		a = read(fd,buff,BUFFER_SIZE);
-		buff[a] = '\0';
-		if (a == 0)
+		if (a <= 0)
 			break; 
+		buff[a] = '\0';
 		boby = ft_strjoin(boby,buff);
 	}
 	free(buff);
@@ -85,84 +85,84 @@ char *get_next_line(int fd)
 		return(free(buffreturned), NULL);
 	return (buffreturned); 
 }
-#include <stdio.h>
-int main ()
-{
-	int i = open("test.txt",O_CREAT| O_RDWR , 0666);
-
-	char *a;
- 	while((a = get_next_line(i)) != NULL)
-	{
-		printf("%s", a);
-		free(a);
-	}
-	close(i);
-}
-	/* a = get_next_line(i);
-	printf("%s",a);
-	free(a);	a = get_next_line(i);
-	printf("%s",a);
-	free(a);	a = get_next_line(i);
-	printf("%s",a);
-	free(a);	a = get_next_line(i);
-	printf("%s",a);
-	free(a);	a = get_next_line(i);
-	printf("%s",a);
-	free(a);	a = get_next_line(i);
-	printf("%s",a);
-	free(a);	a = get_next_line(i);
-	printf("%s",a);
-	free(a);	a = get_next_line(i);
-	printf("%s",a);
-	free(a);	a = get_next_line(i);
-	printf("%s",a);
-	free(a);	a = get_next_line(i);
-	printf("%s",a);
-	free(a);	a = get_next_line(i);
-	printf("%s",a);
-	free(a);	a = get_next_line(i);
-	printf("%s",a);
-	free(a);	a = get_next_line(i);
-	printf("%s",a);
-	free(a);	
-	a = get_next_line(i);
-	printf("%s",a);
-	free(a);
-		a = get_next_line(i);
-	printf("%s",a);
-	free(a);
-		a = get_next_line(i);
-	printf("%s",a);
-	free(a);
-		a = get_next_line(i);
-	printf("%s",a);
-	free(a);
-		a = get_next_line(i);
-	printf("%s",a);
-	free(a);
-		a = get_next_line(i);
-	printf("%s",a);
-	free(a);
-		a = get_next_line(i);
-	printf("%s",a);
-	free(a);
-    a = get_next_line(i);
-	printf("%s",a);
-	free(a);
-	a = get_next_line(i);
-	printf("%s",a);
-	free(a); */
-	// a = get_next_li ne(i);
-	//     printf("%s",a);
-	// free(a);
-//} 
-
+// #include <stdio.h>
 // int main ()
 // {
 // 	int i = open("test.txt",O_CREAT| O_RDWR , 0666);
 
 // 	char *a;
-//  	a = get_next_line(i);
+//  	while((a = get_next_line(i)) != NULL)
+// 	{
+// 		printf("%s", a);
+// 		free(a);
+// 	}
+// 	close(i);
+// }
+// 	/* a = get_next_line(i);
+// 	printf("%s",a);
+// 	free(a);	a = get_next_line(i);
+// 	printf("%s",a);
+// 	free(a);	a = get_next_line(i);
+// 	printf("%s",a);
+// 	free(a);	a = get_next_line(i);
+// 	printf("%s",a);
+// 	free(a);	a = get_next_line(i);
+// 	printf("%s",a);
+// 	free(a);	a = get_next_line(i);
+// 	printf("%s",a);
+// 	free(a);	a = get_next_line(i);
+// 	printf("%s",a);
+// 	free(a);	a = get_next_line(i);
+// 	printf("%s",a);
+// 	free(a);	a = get_next_line(i);
+// 	printf("%s",a);
+// 	free(a);	a = get_next_line(i);
+// 	printf("%s",a);
+// 	free(a);	a = get_next_line(i);
+// 	printf("%s",a);
+// 	free(a);	a = get_next_line(i);
+// 	printf("%s",a);
+// 	free(a);	a = get_next_line(i);
+// 	printf("%s",a);
+// 	free(a);	
+// 	a = get_next_line(i);
+// 	printf("%s",a);
+// 	free(a);
+// 		a = get_next_line(i);
+// 	printf("%s",a);
+// 	free(a);
+// 		a = get_next_line(i);
+// 	printf("%s",a);
+// 	free(a);
+// 		a = get_next_line(i);
+// 	printf("%s",a);
+// 	free(a);
+// 		a = get_next_line(i);
+// 	printf("%s",a);
+// 	free(a);
+// 		a = get_next_line(i);
+// 	printf("%s",a);
+// 	free(a);
+// 		a = get_next_line(i);
+// 	printf("%s",a);
+// 	free(a);
+//     a = get_next_line(i);
+// 	printf("%s",a);
+// 	free(a);
+// 	a = get_next_line(i);
+// 	printf("%s",a);
+// 	free(a); */
+// 	// a = get_next_li ne(i);
+// 	//     printf("%s",a);
+// 	// free(a);
+// //} 
+
+// // int main ()
+// // {
+// // 	int i = open("test.txt",O_CREAT| O_RDWR , 0666);
+
+// // 	char *a;
+// //  	a = get_next_line(i);
 // 		printf("%s", a);
 // 		free(a);
 // 	close(i);
