@@ -1,18 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abismail <abismail@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/02 20:03:33 by abismail          #+#    #+#             */
+/*   Updated: 2024/12/02 20:06:59 by abismail         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line_bonus.h"
 #include <stdio.h>
+
 size_t	ft_strlen(char *str)
 {
 	size_t	x;
-	if(!str)
-		return(0);
+
+	if (!str)
+		return (0);
 	x = 0;
 	while (str[x])
 		x++;
 	return (x);
 }
+
 int	checker(char *str, int c)
 {
-	int		x;
+	int	x;
 
 	if (str == NULL)
 		return (0);
@@ -27,11 +42,13 @@ int	checker(char *str, int c)
 	}
 	return (0);
 }
+
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*p;
 	int		x;
 	int		y;
+
 	x = 0;
 	y = 0;
 	if (!s2)
@@ -48,17 +65,19 @@ char	*ft_strjoin(char *s1, char *s2)
 	free(s1);
 	return (p);
 }
+
 char	*ft_strldup(char *s, int i)
 {
 	char	*p;
 	int		x;
- 	if (s == NULL)
+
+	if (s == NULL)
 	{
 		s = malloc(1);
 		if (!s)
 			return (NULL);
 		s[0] = '\0';
-	} 
+	}
 	x = 0;
 	p = malloc(i + 1);
 	if (p == NULL)
@@ -71,6 +90,7 @@ char	*ft_strldup(char *s, int i)
 	p[x] = '\0';
 	return (p);
 }
+
 char	*ft_strchr(char *str, int c)
 {
 	int		x;
@@ -88,5 +108,3 @@ char	*ft_strchr(char *str, int c)
 	}
 	return (NULL);
 }
-
-
